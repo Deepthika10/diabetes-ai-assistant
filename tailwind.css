@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles using blue color tokens */
+:root{
+  --primary: #0ea5ff; /* Tailwind sky-500 like blue */
+}
+
+/* small helper */
+.brand-logo{font-size:1.5rem}
