@@ -1,22 +1,35 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  theme: {
-    extend: {
-      colors: {
-        primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bfe9ff',
-          300: '#99e0ff',
-          400: '#66cfff',
-          500: '#0ea5ff',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#044e68'
-        }
-      }
-    }
-  },
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: [
+            'Inter',
+            'ui-sans-serif',
+            'system-ui',
+            'Segoe UI',
+            'Roboto',
+            'Helvetica Neue',
+            'Arial',
+            'sans-serif',
+          ],
+        },
+        colors: {
+          primary: {
+            light: '#e0f2fe', // light blue
+            DEFAULT: '#0ea5ff', // blue
+            dark: '#0369a1', // dark blue
+          },
+          accent: {
+            light: '#bbf7d0', // light green
+            DEFAULT: '#22c55e', // green
+            dark: '#15803d', // dark green
+          },
+          background: {
+            DEFAULT: '#ffffff', // white
+          },
+        },
+      },
+    },
   plugins: [],
 }

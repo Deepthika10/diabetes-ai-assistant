@@ -15,56 +15,46 @@ export default function InputProcessing(){
   }
 
   return (
-    <div>
-      <h3>Input Processing</h3>
+    <div className="min-h-screen flex flex-col items-center bg-background text-gray-900 py-8 px-2" style={{background: 'linear-gradient(135deg, #e0f2fe 0%, #bbf7d0 100%)'}}>
+      <div className="w-full max-w-2xl">
+        <h3 className="text-2xl font-bold text-primary-dark mb-6 text-center">Input Processing</h3>
 
-      <div className="card">
-        <div className="row">
-          <div style={{flex:1}}>
-            <div className="small muted">Upload lab report (PDF/image)</div>
-            <input type="file" onChange={handleUpload} />
-
-            <div style={{marginTop:12}}>
-              <div className="small muted">Voice dictation</div>
-              <button className="outline">Start Voice (mock)</button>
+        <div className="card bg-white shadow-lg rounded-xl p-6 mb-6">
+          <div className="flex flex-col gap-6">
+            <div>
+              <div className="small muted mb-2">Upload lab report (PDF/image)</div>
+              <input type="file" onChange={handleUpload} className="mb-2" />
             </div>
 
-            <div style={{marginTop:12}}>
-              <div className="small muted">Manual entry</div>
-              <div style={{display:'flex',gap:8,marginTop:6}}>
-                <input className="search" placeholder="HbA1c (%)" />
-                <input className="search" placeholder="FPG (mg/dL)" />
-                <input className="search" placeholder="PPG (mg/dL)" />
+            <div>
+              <div className="small muted mb-2">Voice dictation</div>
+              <button className="outline border-accent text-accent hover:bg-accent-light">Start Voice (mock)</button>
+            </div>
+
+            <div>
+              <div className="small muted mb-2">Manual entry</div>
+              <div className="flex gap-2 mt-2">
+                <input className="search border border-primary-light rounded-lg p-2" placeholder="HbA1c (%)" />
+                <input className="search border border-primary-light rounded-lg p-2" placeholder="FPG (mg/dL)" />
+                <input className="search border border-primary-light rounded-lg p-2" placeholder="PPG (mg/dL)" />
               </div>
             </div>
           </div>
-
-          <div style={{width:300}}>
-            <div className="card">
-              <div className="small muted">Processing status</div>
-              {processing ? (
-                <div>
-                  <div style={{marginTop:8}}>Analyzing diabetes-related parameters...</div>
-                  <div style={{height:8,background:'#eef2f6',borderRadius:8,marginTop:8}}>
-                    <div style={{width:'70%',height:8,background:'var(--accent)',borderRadius:8}}></div>
-                  </div>
-                </div>
-              ) : (
-                <div className="small muted">Idle</div>
-              )}
-
-              {summary && (
-                <div style={{marginTop:12}}>
-                  <div style={{fontWeight:700}}>Auto-generated summary</div>
-                  <div className="small muted">Fasting Glucose: {summary.fpg} mg/dL</div>
-                  <div className="small muted">HbA1c: {summary.hba1c}%</div>
-                  <div className="small muted">Weight: {summary.weight} kg • BMI: {summary.bmi}</div>
-                  <div className="small muted">Complication risk: {summary.complicationRisk}</div>
-                </div>
-              )}
-            </div>
-          </div>
         </div>
+
+        {processing && (
+          <div className="card bg-primary-light text-primary-dark p-4 rounded-xl mb-4 text-center">Processing...</div>
+        )}
+        {summary && (
+          <div className="card bg-accent-light text-accent-dark p-4 rounded-xl mb-4">
+            <div className="font-bold mb-2">Summary</div>
+            <div>FPG: <span className="font-semibold">{summary.fpg} mg/dL</span></div>
+            <div>HbA1c: <span className="font-semibold">{summary.hba1c}%</span></div>
+            <div>Weight: <span className="font-semibold">{summary.weight} kg</span></div>
+            <div>BMI: <span className="font-semibold">{summary.bmi}</span></div>
+            <div>Complication Risk: <span className="font-semibold">{summary.complicationRisk}</span></div>
+          </div>
+        )}
       </div>
     </div>
   )
